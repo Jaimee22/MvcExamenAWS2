@@ -1,0 +1,40 @@
+﻿@* @model List<Evento> *@
+@model Evento
+
+@{
+    string UrlBucket = keysModel.BucketUrl;
+}
+
+
+
+<h1>Buscador Evento Por Categoría</h1>
+
+<p>
+    <a asp-controller="Eventos" asp-action="Eventos">Volver a Index</a>
+</p>
+
+<form asp-controller="Eventos" asp-action="FindEvento" method="post">
+    <label>Introduzca id de categoria</label>
+    <input type="text" name="idcategoria" class="form-control" />
+    <button class="btn btn-info">Buscar evento</button>
+</form>
+
+@if (Model != null)
+{
+    <table class="table table-bordered table-warning">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Nombre</td>
+                <td>
+                    <img src="@UrlBucket@Model.Imagen" class="card-img-top" alt="..." style="width:70px; height: 80px" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
